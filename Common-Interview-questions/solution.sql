@@ -42,10 +42,13 @@ WHERE rnk = 3;
 ----------------------------------------------------------------------------------------------------
 -- Common Interview Starter
 
+-- retrive all duplicate email
+
 SELECT * FROM 
 (
     SELECT * , ROW_NUMBER() OVER(PARTITION BY email ORDER by id ) AS rnk FROM users
 )t
 WHERE rnk > 1;
 
+----------------------------------------------------------------------------------------------------
 
