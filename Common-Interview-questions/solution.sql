@@ -26,7 +26,7 @@ SELECT DISTINCT salary FROM employee
 ORDER BY salary DESC
 LIMIT 1 OFFSET 2
 
--- Subquery
+-- Subquery.
 SELECT MAX(Salary)  FROM employee
 WHERE  Salary < (SELECT MAX(Salary) FROM employee) 
 WHERE Salary < (SELECT MAX(Salary) FROM employee);
