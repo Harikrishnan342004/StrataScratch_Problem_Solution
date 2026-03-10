@@ -1,0 +1,1 @@
+mongoimport Persons.json -d contactData -c contacts --jsonArray
