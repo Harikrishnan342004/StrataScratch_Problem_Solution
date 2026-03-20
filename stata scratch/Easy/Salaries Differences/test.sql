@@ -32,7 +32,7 @@ SELECT
    JOIN db_dept AS DD 
    ON DE.department_id = DD.ID;
 
--- Salaries Differences
+-- Salaries Difference
 
 -- Calculates the difference between the highest salaries in the marketing and engineering departments. Output just the absolute difference in salaries.
 
