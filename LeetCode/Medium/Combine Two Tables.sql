@@ -18,6 +18,31 @@ FROM Person AS P
 LEFT JOIN Address AS A
 ON P.personId = A.personId    
 ;
+ --------------------------------------------------
+
+WITH T AS (SELECT  DISTINCT salary ,
+           DENSE_RANK() OVER( ORDER BY salary desc) AS RNK
+           FROM Employee
+)
+SELECT IFNULL
+(
+    (SELECT salary
+    FROM T
+    WHERE RNK = 2),
+    NULL
+)  as SecondHighestSalary 
+
+   ----------------------------
+
+   SELECT IFNULL(
+    (   SELECT DISTINCT salary
+                FROM Employee
+                ORDER BY salary DESC
+                LIMIT 1 OFFSET 1
+    ), NULL
+    )AS SecondHighestSalary ;
+     
+
 
 -- Table: Address
 
