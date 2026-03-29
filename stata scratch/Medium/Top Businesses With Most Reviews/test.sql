@@ -28,7 +28,7 @@
 -- postal_code:       text
 -- latitude:          double
 -- longitude:         double
--- stars:             double
+-- stars:             double 
 -- review_count:      bigint
 -- is_open:           bigint
 -- categories:        text
