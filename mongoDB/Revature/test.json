@@ -1,0 +1,139 @@
+db.Hello.aggregate(
+                    [
+                      {
+                        $match : {"property_type" : "Apartment" }
+                    },
+                    { $project : {    "name": 1, 
+                                      "price": 1 ,
+                                      "address.country": 1,
+                                      "_id": 0
+                                    } }
+                                
+                    ]
+                    )
+
+// ------------------------------------------------------------------
+
+// 2.Price Range with Amenity
+
+db.Hello.aggregate([
+  {
+    $match: {
+      price: { $gt: 100, $lt: 300 },
+      amenities: "Wifi"
+    }
+  },
+  {
+    $project: {
+      name: 1,
+      price: 1,
+      amenities: 1,
+      _id: 0
+    }
+  }
+])
+
+
+
+--------------------------------------------------------------------
+// 3.Country and Rating Filter
+
+db.Hello.aggregate(
+                  [{
+                     $match : 
+                     {
+                       "review_scores.review_scores_rating": {$gte : 90}
+                     }
+                    },
+                    {
+                       $project : {
+                        "name": 1,
+                        "review_scores":1,
+                        "address":1,
+                        "_id": 0
+                       }
+                    }
+                  ]  
+                  )
+
+--------------------------------------------------------------------
+// Multiple Amenities
+
+db.Hello.aggregate(
+                   [
+                     {
+                        $match : {
+                       amenities : { $all: ["Kitchen", "Heating"] }
+                        }
+                     },
+                     {
+                            $project : 
+                            {
+                                "name" : 1,
+                                "amenities" : 1,
+                                "_id" : 0
+                            }
+                        }
+                   ]
+                   )
+----------------------------------------------------------------------
+
+db.Hello.aggregate(
+                 [
+                    {
+                   $group{
+                           _id: "address.country",
+                           count : {$sum : 1}
+                         }
+                    },
+                    $project : 
+                    {
+                             country: 1,
+                             count : 1,
+                             _id : 0
+                    }
+
+                 ]
+                 )
+
+db.Hello.aggregate([
+    {
+    $group: {
+      _id: "$address.country",
+      count: { $sum: 1 }
+    }
+},
+  {
+    $project: {
+      country: "$_id",
+      count: 1,
+      _id: 0
+    }
+  }
+]
+)
+
+
+Count Listings per Country
+Count the total number of listings available in each country.
+Output should include: country, count.
+Top Expensive Listings
+Retrieve the top 5 most expensive listings sorted by price in descending order.
+Return: name, price, address.market.
+ 
+Average Price per Country
+Calculate the average price of listings for each country using aggregation.
+Output: country, avgPrice.
+Top Hosts by Number of Listings
+Find the top 3 hosts who have the highest number of listings.
+Group by host.host_id and return: host_name, total_listings.
+Most Common Amenities
+Determine the top 10 most frequently occurring amenities.
+Steps should include unwinding the amenities array, grouping, counting, and sorting.
+Review-Based Analysis
+Find listings that have more than 5 reviews and calculate the average review score.
+Return: name, number_of_reviews, avg_review_score.
+
+                 
+
+                 
