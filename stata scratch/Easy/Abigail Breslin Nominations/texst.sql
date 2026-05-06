@@ -5,7 +5,7 @@ WHERE
   nominee = 'Abigail Breslin';
 
 
--- Count the number of movies for which Abigail Breslin was nominated for an Oscar
+-- Count the number of movies for which Abigail Breslin was nominated for an Oscars
 
 -- oscar_nominees
 
