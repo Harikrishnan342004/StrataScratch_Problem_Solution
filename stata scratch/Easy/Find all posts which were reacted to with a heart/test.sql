@@ -3,6 +3,11 @@ JOIN facebook_reactions R
 ON fp.post_id = R.post_id
 WHERE R.reaction = 'heart';
 
+SELECT DISTINCT facebook_posts.* FROM facebook_posts
+JOIN facebook_reactions ON
+facebook_reactions.post_id = facebook_posts.post_id
+WHERE facebook_reactions.reaction = 'heart';
+
 
 -- Find all posts which were reacted to with a heart
 
