@@ -1,4 +1,4 @@
--- High Earners in Support Departments
+-- High Earners in Support Department
 
 
 -- The HR team is reviewing compensation packages for employees in support functions.
