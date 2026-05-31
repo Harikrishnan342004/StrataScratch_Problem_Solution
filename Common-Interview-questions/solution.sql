@@ -66,3 +66,30 @@ WHERE rnk <= 3;
 
 ----------------------------------------------------------------------------------------------------
 
+-- Find the duplicate in the table
+
+-- Employee Table
+-- emp_id	emp_name	department	salary
+-- 1	Hari	IT	50000
+-- 2	Ravi	HR	45000
+-- 3	Hari	IT	50000
+-- 4	Priya	Finance	55000
+-- 5	Ravi	HR	45000
+-- 6	Karthik	IT	60000
+-- 7	Priya	Finance	55000
+-- 8	Arjun	Sales	40000
+
+SELECT * , COUNT(*) FROM Employee
+GROUP BY  emp_name , department 
+HAVING count(*)> 1;
+
+--------------------------------------------------------------------------------------------
+
+
+Calculate the Total Revenue per Product (Paypal)
+
+SELECT product_id, sum(quantity * price) as total_revenue
+FROM sales
+GROUP BY product_id;
+
+------------------------------------------------------------------------------------
