@@ -52,11 +52,17 @@ WHERE rnk > 1;
 
 ----------------------------------------------------------------------------------------------------
 
--- Get the TOP 3 highest paid employees in each department
+-- Get the TOP 3 highest paid employees in each department ...
 
 SELECT * FROM Employee
 ORDER BY salary DESC
 LIMIT 3 ;
+
+SELECT *, DENSE_RANK()
+OVER( ORDER BY salary DESC) AS rnk
+FROM Employee
+WHERE rnk <= 3;
+
 
 ----------------------------------------------------------------------------------------------------
 
