@@ -23,7 +23,7 @@
 
 -- Return the result table in any order.
 
--- The result format is in the following example.
+-- The result format is in the following example..
 
 
 SELECT  name ,
