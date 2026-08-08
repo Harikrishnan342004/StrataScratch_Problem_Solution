@@ -10,6 +10,17 @@
 -- customers
 -- orders
 
+
+select C.first_name,
+      O.order_date ,
+       O.order_details,
+       O.total_order_cost
+from customers C
+JOIN orders O ON 
+C.id = O.cust_id
+WHERE C.first_name  IN ('Jill' , 'Eva' )
+ORDER BY cust_id ASC;
+
 select C.first_name,
        O.order_date,
        O.order_details,
